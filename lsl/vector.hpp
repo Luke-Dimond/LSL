@@ -4,9 +4,8 @@
 */
 
 #pragma once
-#include <iostream>
 
-namespace LSL {
+namespace lsl {
 
 	template<typename T>
 	class vector {
@@ -14,9 +13,9 @@ namespace LSL {
 	public:
 
 		// Constructor and Destructor
-		vector()
-		{
-			data_ = new T[capacity_];
+		vector() 
+            : data_(new T[capacity_])
+        {
 		}
 
 		~vector() {
@@ -85,7 +84,7 @@ namespace LSL {
 	private:
 		T* data_{ nullptr };
 		size_t size_{};
-		size_t capacity_{ 10 }
+		size_t capacity_{ 10 };
 	}; //end of class
 
 }// End of namespace
