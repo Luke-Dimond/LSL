@@ -79,7 +79,24 @@ namespace lsl {
             size_--;
         }
 
-        
+		vector& operator= (const vector& vec){
+			
+			if(this == &vec) return *this;
+
+			T* new_data = new T[vec.capacity()];
+
+			for (size_t i = 0; i < vec.size(); i++) {
+				new_data[i] = vec[i];
+			}
+
+			delete[] data_;
+
+			data_ = new_data;
+			size_ = vec.size();
+			capacity_ = vec.capacity();
+
+			return *this;
+		}
 
 	private:
 		T* data_{ nullptr };
