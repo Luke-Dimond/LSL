@@ -4,6 +4,7 @@
 */
 
 #pragma once
+#include <cstddef>
 
 namespace lsl {
 
@@ -98,10 +99,15 @@ namespace lsl {
 			return *this;
 		}
 
+		T operator[] (size_t i){
+			return data_[i];
+		}
+
 	private:
+		size_t capacity_{ 10 };
 		T* data_{ nullptr };
 		size_t size_{};
-		size_t capacity_{ 10 };
+		
 	}; //end of class
 
 }// End of namespace
