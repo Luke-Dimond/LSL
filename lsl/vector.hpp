@@ -16,7 +16,7 @@ namespace lsl {
 
 		// Constructor and Destructor
 		vector() 
-            : data_(new T[capacity_])
+            : data_(new T[capacity_]{})
         {
 		}
 
@@ -25,6 +25,24 @@ namespace lsl {
 		}
 
 		// Functions
+
+		const T* begin() const {
+        	return data_;
+    	}
+
+		const T* end() const {
+			return data_ + size_;
+		}
+
+		
+		T* begin() {
+        	return data_;
+    	}
+
+    	T* end() {
+        	return data_ + size_;
+    	}
+
 		constexpr bool empty() const {
 			return size_ == 0;
 		}
