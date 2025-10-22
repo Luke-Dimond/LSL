@@ -37,7 +37,14 @@ namespace lsl{
         const T* end() const {
             return data_ + size_;
         }
+        
+        T* begin() {
+            return data_;
+        }
 
+        T* end() {
+            return data_ + size_;
+        }
 
 
         // Operators
