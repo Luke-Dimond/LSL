@@ -1,5 +1,6 @@
 /*
 * Created by: Luke Manuel
+* Description: A custom vector made to mimic std::vector
 * 2025
 */
 
@@ -80,6 +81,7 @@ namespace lsl {
             size_--;
         }
 
+		//Operators
 		vector& operator= (const vector& vec){
 			
 			if(this == &vec) return *this;
@@ -99,7 +101,7 @@ namespace lsl {
 			return *this;
 		}
 
-		T operator[] (size_t i){
+		T& operator[] (size_t i){
 			return data_[i];
 		}
 
