@@ -9,25 +9,16 @@
 #include <stdexcept>
 
 namespace lsl{
-    template <typename T>
+    template <typename T, size_t S>
     class array{
 
     public:
 
-        // Constructor and Destructor
-        array(size_t size)
-            : data_(new T[size]{}), size_(size)
-        {
-        }
-
-        ~array() {
-                delete[] data_;
-            }
-
+        T data_[S]{};
 
         // Functions
         size_t length() const {
-            return size_;
+            return S;
         }
 
         const T* begin() const {
@@ -35,7 +26,7 @@ namespace lsl{
         }
 
         const T* end() const {
-            return data_ + size_;
+            return data_ + S;
         }
         
         T* begin() {
@@ -43,18 +34,18 @@ namespace lsl{
         }
 
         T* end() {
-            return data_ + size_;
+            return data_ + S;
         }
 
 
         // Operators
         array& operator= (const array& arr){
 
-            if (size_ != arr.length()){
+            if (S != arr.length()){
                 throw std::invalid_argument("Both arrays must be of equal length");
             }
 
-            for(size_t i = 0; i < size_; i++){
+            for(size_t i = 0; i < S; i++){
                 data_[i] = arr[i];
             }
 
@@ -62,13 +53,13 @@ namespace lsl{
 
         }
 
-        T& operator[] (size_t i) const {
+        const T& operator[] (size_t i) const {
             return data_[i];
         }
 
-    private:
+        T& operator[] (size_t i){
+            return data_[i];
+        }
 
-        T* data_{nullptr};
-        size_t size_{};
     };
 }
