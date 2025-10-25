@@ -18,7 +18,7 @@ namespace lsl{
         T data_[S]{};
 
         // Functions
-        size_t length() const {
+        size_t size() const {
             return S;
         }
 
