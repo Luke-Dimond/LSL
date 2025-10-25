@@ -1,7 +1,7 @@
 /*
 * Created by: Luke Manuel
 * Description: A custom array made to mimic std::array
-* 2025
+* 2025, October
 */
 
 #pragma once
@@ -17,7 +17,7 @@ namespace lsl{
         T data_[S]{};
 
         // Functions
-        size_t length() const {
+        size_t size() const {
             return S;
         }
 
