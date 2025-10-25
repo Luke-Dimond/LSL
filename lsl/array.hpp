@@ -1,7 +1,7 @@
 /*
 * Created by: Luke Manuel
 * Description: A custom array made to mimic std::array
-* 2025, October
+* 2025,
 */
 
 #pragma once
@@ -13,11 +13,12 @@ namespace lsl{
     class array{
 
     public:
+        using value_type = T;
 
         T data_[S]{};
 
         // Functions
-        size_t size() const {
+        size_t length() const {
             return S;
         }
 
@@ -61,5 +62,5 @@ namespace lsl{
             return data_[i];
         }
 
-    };
-}
+    }; // End of class
+}//end of namespace

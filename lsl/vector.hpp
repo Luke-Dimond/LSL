@@ -1,7 +1,7 @@
 /*
 * Created by: Luke Manuel
 * Description: A custom vector made to mimic std::vector
-* 2025
+* 2025, October
 */
 
 #pragma once
@@ -12,7 +12,14 @@ namespace lsl {
 	template<typename T>
 	class vector {
 
+	private:
+		size_t capacity_{ 10 };
+		T* data_{ nullptr };
+		size_t size_{};
+	
+		
 	public:
+		using value_type = T;
 
 		// Constructor and Destructor
 		vector() 
@@ -53,6 +60,10 @@ namespace lsl {
 
 		constexpr size_t capacity() const {
 			return capacity_;
+		}
+
+		void erase(){
+			size_ = 0;
 		}
 
         void shrink(){
@@ -123,11 +134,6 @@ namespace lsl {
 			return data_[i];
 		}
 
-	private:
-		size_t capacity_{ 10 };
-		T* data_{ nullptr };
-		size_t size_{};
-		
 	}; //end of class
 
 }// End of namespace
