@@ -42,7 +42,7 @@ namespace lsl{
         // Operators
         array& operator= (const array& arr){
 
-            if (S != arr.length()){
+            if (S != arr.size()){
                 throw std::invalid_argument("Both arrays must be of equal length");
             }
 
