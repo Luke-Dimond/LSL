@@ -105,13 +105,13 @@ namespace lsl {
 		};
 
         
-        void pop_back(){
+        void pop_back() {
             if (empty()) return;
             size_--;
         }
 
 		//Operators
-		vector& operator= (const vector& vec){
+		vector& operator= (const vector& vec) {
 			
 			if(this == &vec) return *this;
 
@@ -130,7 +130,7 @@ namespace lsl {
 			return *this;
 		}
 
-		T& operator[] (size_t i){
+		T& operator[] (size_t i) {
 			return data_[i];
 		}
 

@@ -1,3 +1,4 @@
+
 /*
 * Created by: Luke Manuel
 * Description: A custom array made to mimic std::array
@@ -9,7 +10,7 @@
 namespace lsl{
 
     template <typename Container>
-    void quickSort(Container& con){
+    void quickSort(Container& con) {
         using type = typename Container::value_type;
 
         if(con.size() <= 1) return;
@@ -20,10 +21,10 @@ namespace lsl{
         lsl::vector<type> vecLow;
         lsl::vector<type> vecHigh;
 
-        for (size_t i = 0; i < con.size() - 1; i++){
+        for (size_t i = 0; i < con.size() - 1; i++) {
             if (con[i] < con[pivot]){
                 vecLow.push_back(con[i]);
-            } else{
+            } else {
                 vecHigh.push_back(con[i]);
             }
         }//end of for
@@ -34,13 +35,13 @@ namespace lsl{
 
 
         //then readd both halves to the container
-        for (size_t i = 0; i < vecLow.size(); i++){
+        for (size_t i = 0; i < vecLow.size(); i++) {
             con[i] = vecLow[i];
         }
 
         con[vecLow.size()] = con[pivot];
 
-        for (size_t i = 0; i < vecHigh.size(); i++){
+        for (size_t i = 0; i < vecHigh.size(); i++) {
             con[vecLow.size() + 1 + i] = vecHigh[i];
         }
 
