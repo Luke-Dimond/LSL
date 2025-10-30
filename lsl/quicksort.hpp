@@ -37,7 +37,7 @@ namespace lsl{
         quickSort(vecHigh);
 
 
-        //then readd both halves to the container
+        //then read both halves to the container
         for (size_t i = 0; i < vecLow.size(); i++) {
             con[i] = vecLow[i];
         }
