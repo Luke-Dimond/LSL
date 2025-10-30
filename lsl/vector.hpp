@@ -6,6 +6,7 @@
 
 #pragma once
 #include <cstddef>
+#include <stdexcept>
 
 namespace lsl {
 
@@ -102,13 +103,22 @@ namespace lsl {
 				reserve(capacity_ * 2);
 			}
 			data_[size_++] = value;
-		};
-
-        
+		}
+  
         void pop_back() {
             if (empty()) return;
             size_--;
         }
+
+		T& at(size_t i) {
+			if (i >= size_) throw std::out_of_range("exceeds size of vector");
+			return data_[i];
+		}
+
+		const T& at(size_t i) const {
+			if (i >= size_) throw std::out_of_range("exceeds size of vector");
+			return data_[i];
+		}
 
 		//Operators
 		vector& operator= (const vector& vec) {
