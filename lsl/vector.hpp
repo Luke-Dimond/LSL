@@ -144,6 +144,10 @@ namespace lsl {
 			return data_[i];
 		}
 
+		const T& operator[] (size_t i) const {
+			return data_[i];
+		}
+
 	}; //end of class
 
 }// End of namespace
