@@ -27,7 +27,7 @@ namespace lsl {
             : data_(new T[capacity_]{}) {
 		}
 
-			//copy constructor
+		//copy constructor
 		vector(const vector& vec) 
 			: capacity_(vec.capacity()), data_(new T[capacity_]), size_(vec.size()) {
 

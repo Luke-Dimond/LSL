@@ -9,23 +9,23 @@
 
 namespace lsl{
 
-    template <typename Container>
-    void quickSort(Container& con) {
-        using type = typename Container::value_type;
+    template <typename Container, typename Compare>
+    void quickSort(Container& con, Compare comp) {
+        using T = typename Container::value_type;
 
         if(con.size() <= 1) return;
         
         //Separate the halves of the container around a pivot
-        type pivot = con[con.size() - 1];
+        T pivot = con[con.size() - 1];
 
-        lsl::vector<type> vecLow;
-        lsl::vector<type> vecHigh;
+        lsl::vector<T> vecLow;
+        lsl::vector<T> vecHigh;
 
         vecLow.reserve(con.size() / 2);
         vecHigh.reserve(con.size() / 2);
 
         for (size_t i = 0; i < con.size() - 1; i++) {
-            if (con[i] < pivot){
+            if (comp(con[i], pivot)){
                 vecLow.push_back(con[i]);
             } else {
                 vecHigh.push_back(con[i]);
@@ -33,8 +33,8 @@ namespace lsl{
         }//end of for
 
         //Recursive call on the two halves
-        quickSort(vecLow);
-        quickSort(vecHigh);
+        quickSort(vecLow, comp);
+        quickSort(vecHigh, comp);
 
 
         //then read both halves to the container
@@ -49,6 +49,13 @@ namespace lsl{
         }
 
     }//end of function
+
+    //Overload that defaults the sort to a < b;
+    template <typename Container>
+    void quickSort(Container& con){
+        using T = typename Container::value_type;
+        lsl::quickSort(con, [] (const T& a, const T& b) {return a < b;});
+    }
 
 }//end namespace
 
