@@ -22,10 +22,19 @@ namespace lsl {
 	public:
 		using value_type = T;
 
-		// Constructor and Destructor
+		// Constructors and Destructor
 		vector() 
-            : data_(new T[capacity_]{})
-        {
+            : data_(new T[capacity_]{}) {
+		}
+
+			//copy constructor
+		vector(const vector& vec) 
+			: capacity_(vec.capacity()), data_(new T[capacity_]), size_(vec.size()) {
+
+			for (size_t i = 0; i < vec.size(); i++)
+			{
+				data_[i] = vec[i];
+			}
 		}
 
 		~vector() {
