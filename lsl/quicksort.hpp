@@ -2,7 +2,7 @@
 /*
   Created by: Luke Manuel
   Description: A custom quicksort function with lambda and C-style array support
-  2025, October
+  2025-10–2025-11
 */
 #pragma once
 #include "lsl.hpp"
@@ -17,7 +17,7 @@ namespace lsl{
            - quicksort()
      
        Date: 
-           - October-November, 2025
+           - 2025-10–2025-11
      
        Description: 
            - A custom quicksort function with lambda and C-style array support that can be overloaded
