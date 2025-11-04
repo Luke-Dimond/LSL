@@ -1,33 +1,33 @@
 
 /*
- * Created by: Luke Manuel
- * Description: A custom quicksort function with lambda and C-style array support
- * 2025, October
- */
+  Created by: Luke Manuel
+  Description: A custom quicksort function with lambda and C-style array support
+  2025, October
+*/
 #pragma once
 #include "lsl.hpp"
 
 namespace lsl{
 
    /*
-    *   Created By:    
-    *       - Luke Manuel
-    * 
-    *   Name: 
-    *       - quicksort()
-    * 
-    *   Date: 
-    *       - October-November, 2025
-    * 
-    *   Description: 
-    *       - A custom quicksort function with lambda and C-style array support that can be overloaded
-    * 
-    *   Accepts: 
-    *       - typename Container
-    *       - Lambda function
-    * 
-    *   Returns: 
-    *       - void
+       Created By:    
+           - Luke Manuel
+     
+       Name: 
+           - quicksort()
+     
+       Date: 
+           - October-November, 2025
+     
+       Description: 
+           - A custom quicksort function with lambda and C-style array support that can be overloaded
+     
+       Accepts: 
+           - typename Container
+           - Lambda function
+     
+       Returns: 
+           - void
     */
     template <typename Container, typename Compare>
     void quickSort(Container& con, Compare comp) {
@@ -71,14 +71,14 @@ namespace lsl{
     }//end of function
 
    /*
-    *   Overload:
-    *       - Defaults the sort to (a < b)
-    * 
-    *   Accepts:
-    *       - Container
-    * 
-    *   Returns:
-    *       - void
+       Overload:
+           - Defaults the sort to (a < b)
+     
+       Accepts:
+           - Container
+     
+       Returns:
+           - void
     */
     template <typename Container>
     void quickSort(Container& con) {
@@ -87,15 +87,15 @@ namespace lsl{
     }
 
    /*
-    *   Overload:
-    *       - Adds support for C-style arrays
-    * 
-    *   Accepts:
-    *       - Pointer to typename T
-    *       - size_t
-    * 
-    *   Returns:
-    *       - void
+       Overload:
+           - Adds support for C-style arrays
+     
+       Accepts:
+           - Pointer to typename T
+           - size_t
+     
+       Returns:
+           - void
     */
     template <typename T>
     void quickSort(T* data, size_t size) {
@@ -118,16 +118,16 @@ namespace lsl{
     }
 
    /*
-    *   Overload:
-    *       - Adds support for C-style arrays with custom sorting option
-    * 
-    *   Accepts:
-    *       - Pointer to typename T
-    *       - size_t
-    *       - Lambda function
-    * 
-    *   Returns:
-    *       - void
+       Overload:
+           - Adds support for C-style arrays with custom sorting option
+     
+       Accepts:
+           - Pointer to typename T
+           - size_t
+           - Lambda function
+     
+       Returns:
+           - void
     */
     template <typename T, typename Comparison>
     void quickSort(T* data, size_t size, Comparison comp) {
