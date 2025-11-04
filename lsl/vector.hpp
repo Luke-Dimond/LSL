@@ -1,7 +1,7 @@
 /*
 * Created by: Luke Manuel
 * Description: A custom vector made to mimic std::vector
-* 2025, October
+* 2025-10–2025-11
 */
 
 #pragma once
@@ -10,6 +10,19 @@
 
 namespace lsl {
 
+	/*
+       Created By:    
+           - Luke Manuel
+     
+       Class: 
+           - vector
+     
+       Date: 
+           - 2025-10–2025-11
+     
+       Description: 
+           - A custom container that mimics std::vector
+    */
 	template<typename T>
 	class vector {
 
@@ -41,7 +54,7 @@ namespace lsl {
 			delete[] data_;
 		}
 
-		// Functions
+		// Methods
 
 		const T* begin() const {
         	return data_;
@@ -72,7 +85,17 @@ namespace lsl {
 			return capacity_;
 		}
 
-		void erase(){
+		void erase(size_t index) {
+			if (index >= size_) throw std::out_of_range("Error: Index outside of vector range");
+
+			for (size_t i = index; i < size_ - 1; i++) {
+				data_[i] = data_[i + 1];
+			}
+
+			size_--;
+		}
+
+		void clear(){
 			size_ = 0;
 		}
 

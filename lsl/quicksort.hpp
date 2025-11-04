@@ -13,7 +13,7 @@ namespace lsl{
        Created By:    
            - Luke Manuel
      
-       Name: 
+       function: 
            - quicksort()
      
        Date: 
