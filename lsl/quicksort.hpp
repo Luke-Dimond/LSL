@@ -1,15 +1,15 @@
 
 /*
-* Created by: Luke Manuel
-* Description: A custom quicksort function with lambda and C-style array support
-* 2025, October
-*/
-#include "lsl.hpp"
+ * Created by: Luke Manuel
+ * Description: A custom quicksort function with lambda and C-style array support
+ * 2025, October
+ */
 #pragma once
+#include "lsl.hpp"
 
 namespace lsl{
 
-    /*
+   /*
     *   Created By:    
     *       - Luke Manuel
     * 
@@ -70,7 +70,7 @@ namespace lsl{
 
     }//end of function
 
-    /*
+   /*
     *   Overload:
     *       - Defaults the sort to (a < b)
     * 
@@ -86,7 +86,7 @@ namespace lsl{
         lsl::quickSort(con, [] (const T& a, const T& b) {return a < b;});
     }
 
-    /*
+   /*
     *   Overload:
     *       - Adds support for C-style arrays
     * 
@@ -102,7 +102,7 @@ namespace lsl{
 
         if (size <= 1) return;
 
-        //Copy C array to lsl::vector and sort it
+        //Copy C-style array to lsl::vector and sort it
         lsl::vector<T> tempVec;
         tempVec.reserve(size);
         for (size_t i = 0; i < size; i++) {
@@ -111,13 +111,13 @@ namespace lsl{
         
         lsl::quickSort(tempVec);
         
-        //place the sorted vector back into the C array
+        //place the sorted vector back into the C-style array
         for (size_t i = 0; i < size; i++) {
             data[i] = tempVec[i];
         }
     }
 
-    /*
+   /*
     *   Overload:
     *       - Adds support for C-style arrays with custom sorting option
     * 
@@ -134,7 +134,7 @@ namespace lsl{
 
         if (size <= 1) return;
 
-        //Copy C array to lsl::vector and sort it
+        //Copy C-style array to lsl::vector and sort it
         lsl::vector<T> tempVec;
         tempVec.reserve(size);
         for (size_t i = 0; i < size; i++) {
@@ -143,7 +143,7 @@ namespace lsl{
         
         lsl::quickSort(tempVec, comp);
         
-        //place the sorted vector back into the C array
+        //place the sorted vector back into the C-style array
         for (size_t i = 0; i < size; i++) {
             data[i] = tempVec[i];
         }
