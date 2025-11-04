@@ -1,7 +1,7 @@
 
 /*
 * Created by: Luke Manuel
-* Description: A custom array made to mimic std::array
+* Description: A custom quicksort function with lambda and C-style array support
 * 2025, October
 */
 #include "lsl.hpp"
@@ -9,6 +9,26 @@
 
 namespace lsl{
 
+    /*
+    *   Created By:    
+    *       - Luke Manuel
+    * 
+    *   Name: 
+    *       - quicksort()
+    * 
+    *   Date: 
+    *       - October-November, 2025
+    * 
+    *   Description: 
+    *       - A custom quicksort function with lambda and C-style array support that can be overloaded
+    * 
+    *   Accepts: 
+    *       - typename Container
+    *       - Lambda function
+    * 
+    *   Returns: 
+    *       - void
+    */
     template <typename Container, typename Compare>
     void quickSort(Container& con, Compare comp) {
         using T = typename Container::value_type;
@@ -50,14 +70,33 @@ namespace lsl{
 
     }//end of function
 
-    //Overload that defaults the sort to a < b;
+    /*
+    *   Overload:
+    *       - Defaults the sort to (a < b)
+    * 
+    *   Accepts:
+    *       - Container
+    * 
+    *   Returns:
+    *       - void
+    */
     template <typename Container>
     void quickSort(Container& con) {
         using T = typename Container::value_type;
         lsl::quickSort(con, [] (const T& a, const T& b) {return a < b;});
     }
 
-    //Overload that adds support for C style arrays
+    /*
+    *   Overload:
+    *       - Adds support for C-style arrays
+    * 
+    *   Accepts:
+    *       - Pointer to typename T
+    *       - size_t
+    * 
+    *   Returns:
+    *       - void
+    */
     template <typename T>
     void quickSort(T* data, size_t size) {
 
@@ -78,7 +117,18 @@ namespace lsl{
         }
     }
 
-    //Overload that adds support for C style arrays with custom sorting
+    /*
+    *   Overload:
+    *       - Adds support for C-style arrays with custom sorting option
+    * 
+    *   Accepts:
+    *       - Pointer to typename T
+    *       - size_t
+    *       - Lambda function
+    * 
+    *   Returns:
+    *       - void
+    */
     template <typename T, typename Comparison>
     void quickSort(T* data, size_t size, Comparison comp) {
 
