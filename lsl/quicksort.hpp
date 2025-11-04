@@ -52,10 +52,51 @@ namespace lsl{
 
     //Overload that defaults the sort to a < b;
     template <typename Container>
-    void quickSort(Container& con){
+    void quickSort(Container& con) {
         using T = typename Container::value_type;
         lsl::quickSort(con, [] (const T& a, const T& b) {return a < b;});
     }
 
+    //Overload that adds support for C style arrays
+    template <typename T>
+    void quickSort(T* data, size_t size) {
+
+        if (size <= 1) return;
+
+        //Copy C array to lsl::vector and sort it
+        lsl::vector<T> tempVec;
+        tempVec.reserve(size);
+        for (size_t i = 0; i < size; i++) {
+            tempVec.push_back(data[i]);
+        }
+        
+        lsl::quickSort(tempVec);
+        
+        //place the sorted vector back into the C array
+        for (size_t i = 0; i < size; i++) {
+            data[i] = tempVec[i];
+        }
+    }
+
+    //Overload that adds support for C style arrays with custom sorting
+    template <typename T, typename Comparison>
+    void quickSort(T* data, size_t size, Comparison comp) {
+
+        if (size <= 1) return;
+
+        //Copy C array to lsl::vector and sort it
+        lsl::vector<T> tempVec;
+        tempVec.reserve(size);
+        for (size_t i = 0; i < size; i++) {
+            tempVec.push_back(data[i]);
+        }
+        
+        lsl::quickSort(tempVec, comp);
+        
+        //place the sorted vector back into the C array
+        for (size_t i = 0; i < size; i++) {
+            data[i] = tempVec[i];
+        }
+    }
 }//end namespace
 
