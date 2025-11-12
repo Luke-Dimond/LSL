@@ -85,10 +85,13 @@ namespace lsl {
 			return capacity_;
 		}
 
-		void erase(size_t index) {
+		//Custom erase method that erases a vector element by index
+		void erase_at(size_t index)
+		{
 			if (index >= size_) throw std::out_of_range("Error: Index outside of vector range");
 
-			for (size_t i = index; i < size_ - 1; i++) {
+			for (size_t i = index; i < size_ - 1; i++)
+			{
 				data_[i] = data_[i + 1];
 			}
 
