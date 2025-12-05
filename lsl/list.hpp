@@ -15,7 +15,7 @@ namespace lsl {
 
         node* head{};
         node* tail{};
-        size_t size{};
+        size_t size_{};
 
     public: 
 
@@ -44,7 +44,7 @@ namespace lsl {
             }
 
             head = tail = nullptr;
-            size = 0;
+            size_ = 0;
         }
 
         void push_front (const T& v) {
@@ -54,7 +54,7 @@ namespace lsl {
 
             head = newNode;
             if (tail == nullptr) tail = newNode;
-            size++;
+            size_++;
         }
 
         void push_back (const T& v) {
@@ -68,7 +68,7 @@ namespace lsl {
             
             tail = newNode;
 
-            size++;
+            size_++;
         } 
 
         void pop_front() {
@@ -84,7 +84,7 @@ namespace lsl {
             }
 
             delete temp;
-            size--;
+            size_--;
         }
 
         void pop_back() {
@@ -100,7 +100,11 @@ namespace lsl {
             }
 
             delete temp;
-            size--;
+            size_--;
+        }
+
+        size_t size() {
+            return size_;
         }
 
         List& operator=(const List& rhs) {
