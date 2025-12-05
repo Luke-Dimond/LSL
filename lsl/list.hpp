@@ -106,6 +106,24 @@ namespace lsl {
         size_t size() {
             return size_;
         }
+        
+        T& at(size_t index) {
+            if (index >= size_) throw std::out_of_range("Index is out of range");
+            node* cur = head;
+            for (size_t i = 0; i < index; i++) {
+                cur = cur->nextNode;
+            }
+            return cur->value;
+        }
+
+        const T& at(size_t index) const {
+            if (index >= size_) throw std::out_of_range("Index is out of range");
+            node* cur = head;
+            for (size_t i = 0; i < index; i++) {
+                cur = cur->nextNode;
+            }
+            return cur->value;
+        }
 
         List& operator=(const List& rhs) {
             if (this == &rhs) return *this;
