@@ -2,16 +2,16 @@
 #include <cstddef>
 
 template <typename T>
-struct node {
-    T value{};
-    node<T>* nextNode{};
-    node<T>* prevNode{};
-};
-
-template <typename T>
 class List {
 
 private: 
+
+    struct node {
+        T value{};
+        node<T>* nextNode{};
+        node<T>* prevNode{};
+    };
+
     node<T>* head{};
     node<T>* tail{};
     size_t size{};
