@@ -9,12 +9,12 @@ namespace lsl {
 
         struct node {
             T value{};
-            node<T>* nextNode{};
-            node<T>* prevNode{};
+            node* nextNode{};
+            node* prevNode{};
         };
 
-        node<T>* head{};
-        node<T>* tail{};
+        node* head{};
+        node* tail{};
         size_t size{};
 
     public: 
@@ -26,18 +26,18 @@ namespace lsl {
         }
 
         List(const List& newList) {
-            for (node<T>* cur = newList.head; cur != nullptr; cur = cur->nextNode) {
+            for (node* cur = newList.head; cur != nullptr; cur = cur->nextNode) {
                 push_back(cur->value);
             }
         }
 
         //Clear the list and free all nodes 
         void clear() {
-            node<T>* curNode = head;
+            node* curNode = head;
 
             while(curNode != nullptr) {
 
-                node<T>* nextNode = curNode->nextNode;
+                node* nextNode = curNode->nextNode;
                 delete curNode;
                 curNode = nextNode;
 
@@ -48,7 +48,7 @@ namespace lsl {
         }
 
         void push_front (const T& v) {
-            node<T>* newNode = new node<T>{v, head, nullptr};
+            node* newNode = new node{v, head, nullptr};
 
             if (head != nullptr) head->prevNode = newNode;
 
@@ -58,7 +58,7 @@ namespace lsl {
         }
 
         void push_back (const T& v) {
-            node<T>* newNode = new node<T>{v, nullptr, tail};
+            node* newNode = new node{v, nullptr, tail};
             
             if (tail != nullptr) {
                 tail->nextNode = newNode;
@@ -74,7 +74,7 @@ namespace lsl {
         void pop_front() {
             if (head == nullptr) throw std::runtime_error("List is empty");
 
-            node<T>* temp = head;
+            node* temp = head;
             head = head->nextNode;
 
             if (head != nullptr) {
@@ -90,7 +90,7 @@ namespace lsl {
         void pop_back() {
             if (tail == nullptr) throw std::runtime_error("List is empty");
 
-            node<T>* temp = tail;
+            node* temp = tail;
             tail = tail->prevNode;
 
             if (tail != nullptr) {
@@ -107,7 +107,7 @@ namespace lsl {
             if (this == &rhs) return *this;
             clear();
 
-            for (node<T>* cur = rhs.head; cur != nullptr; cur = cur->nextNode) {
+            for (node* cur = rhs.head; cur != nullptr; cur = cur->nextNode) {
                 push_back(cur->value);
             }
 
