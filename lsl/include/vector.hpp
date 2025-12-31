@@ -1,9 +1,3 @@
-/*
-* Created by: Luke Manuel
-* Description: A custom vector made to mimic std::vector
-* 2025-10–2025-11
-*/
-
 #pragma once
 #include <cstddef>
 #include <stdexcept>
