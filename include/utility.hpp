@@ -5,6 +5,8 @@
 #pragma once
 #include <string>
 #include <charconv>
+#include <vector>
+#include <fstream>
 
 namespace lsl {
 
@@ -28,5 +30,7 @@ bool stringToNum(const std::string& s, T& num) {
 
     return true;
 }
+
+bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec);
 
 }
