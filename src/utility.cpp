@@ -2,15 +2,14 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <cstdint>
+#include <random>
 
 namespace lsl {
 
 	/*
-	*  Empties a vector then reads a line from a file into it
-	*
-	*  @param file: File that will be read
-	*  @param vec: vector values will be placed into 
-	*  @return true if the function read a line; returns false if EOF
+	*  Reads a line from a file and splits words into a vector.
+	*  Returns false on EOF.
 	*/
 	bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec) {
 
@@ -26,4 +25,49 @@ namespace lsl {
 
 		return true;
 	}
+
+	namespace Random {
+		static std::mt19937_64 rd{ std::random_device{}() };
+
+		/*
+		*  Generates a random integer between two numbers.
+		*/
+		int randomNumber(int low, int high) {
+			std::uniform_int_distribution<int> dist(low, high);
+			return dist(rd);
+		}
+
+		/*
+		*  Generates a random float between two numbers.
+		*/
+		float randomNumber(float low, float high) {
+			std::uniform_real_distribution<float> dist(low, high);
+			return dist(rd);
+		}
+
+		/*
+		*  Generates a random double between two numbers.
+		*/
+		double randomNumber(double low, double high) {
+			std::uniform_real_distribution<double> dist(low, high);
+			return dist(rd);
+		}
+
+		/*
+		*  Sets the seed for the random number generator.
+		*/
+		void setSeed(uint64_t seed) {
+			rd.seed(seed);
+		}
+
+		/*
+		*  Sets the seed for the random number generator to a random number.
+		*
+		*/
+		void randomizeSeed() {
+			rd.seed(std::random_device{}());
+		}
+	}
+
+
 }

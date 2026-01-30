@@ -7,30 +7,43 @@
 #include <charconv>
 #include <vector>
 #include <fstream>
+#include <random>
+#include <cstdint>
 
 namespace lsl {
 
-/*
-*  Converts a string into a numeric value.
-*
-*  @param s: Input string to parse
-*  @param num: Output variable that receives the parsed value
-*  @return bool: true if the entire string is successfully parsed as a number; false otherwise (invalid argument, out of range, partial parse)
-*/
-template <typename T>
-bool stringToNum(const std::string& s, T& num) {
+    /*
+    *  Converts a string into a numeric value.
+    *
+    *  @param s: Input string to parse
+    *  @param num: Output variable that receives the parsed value
+    *  @return bool: true if the entire string is successfully parsed as a number; false otherwise (invalid argument, out of range, partial parse)
+    */
+    template <typename T>
+    bool stringToNum(const std::string& s, T& num) {
 
-    const char* begin = s.data();
-    const char* end = s.data() + s.size();
-    const auto res = std::from_chars(begin, end, num);
+        const char* begin = s.data();
+        const char* end = s.data() + s.size();
+        const auto res = std::from_chars(begin, end, num);
 
-    if (res.ec == std::errc::invalid_argument || res.ptr != end || res.ec == std::errc::result_out_of_range) {
-        return false;
+        if (res.ec == std::errc::invalid_argument || res.ptr != end || res.ec == std::errc::result_out_of_range) {
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
+    bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec);
 
-bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec);
+    namespace Random{
+        int randomNumber(int low, int high);
+        float randomNumber(float low, float high);
+        double randomNumber(double low, double high);
+
+        void setSeed(uint64_t seed);
+        void randomizeSeed();
+    }
+
+
 
 }
