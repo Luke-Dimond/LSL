@@ -1,32 +1,10 @@
-#include "utility.hpp"
-#include <vector>
-#include <fstream>
-#include <sstream>
+#include <lsl/random.hpp>
+#include <random>
 #include <cstdint>
 
 namespace lsl {
-
-	/*
-	*  Reads a line from a file and splits words into a vector.
-	*  Returns false on EOF.
-	*/
-	bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec) {
-
-		std::string token{};
-		vec.clear();
-		if (!std::getline(file, token)) return false;
-
-		std::istringstream iss(token);
-
-		while (iss >> token) {
-			vec.push_back(token);
-		}
-
-		return true;
-	}
-
-	namespace Random {
-		static std::mt19937_64 rd{ std::random_device{}() };
+    namespace random {
+		static thread_local std::mt19937_64 rd{ std::random_device{}() };
 
 		/*
 		*  Generates a random integer between two numbers. [low, high]
@@ -55,7 +33,7 @@ namespace lsl {
 		/*
 		*  Sets the seed for the random number generator.
 		*/
-		void setSeed(uint64_t seed) {
+		void setSeed(std::uint64_t seed) {
 			rd.seed(seed);
 		}
 
@@ -67,6 +45,4 @@ namespace lsl {
 			rd.seed(std::random_device{}());
 		}
 	}
-
-
 }
