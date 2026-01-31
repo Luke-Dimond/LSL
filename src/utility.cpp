@@ -2,7 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include <cstdint>
+#include <string>
 
 namespace lsl {
 

@@ -7,7 +7,6 @@
 #include <charconv>
 #include <vector>
 #include <fstream>
-#include <random>
 #include <cstdint>
 
 namespace lsl {
@@ -35,7 +34,7 @@ namespace lsl {
 
     bool readLineToVector(std::ifstream& file, std::vector<std::string>& vec);
 
-    namespace Random{
+    namespace random{
         int randomNumber(int low, int high);
         float randomNumber(float low, float high);
         double randomNumber(double low, double high);
