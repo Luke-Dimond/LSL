@@ -30,7 +30,7 @@ namespace lsl {
 		static std::mt19937_64 rd{ std::random_device{}() };
 
 		/*
-		*  Generates a random integer between two numbers.
+		*  Generates a random integer between two numbers. [low, high]
 		*/
 		int randomNumber(int low, int high) {
 			std::uniform_int_distribution<int> dist(low, high);
@@ -38,7 +38,7 @@ namespace lsl {
 		}
 
 		/*
-		*  Generates a random float between two numbers.
+		*  Generates a random float between two numbers. [low, high)
 		*/
 		float randomNumber(float low, float high) {
 			std::uniform_real_distribution<float> dist(low, high);
@@ -46,7 +46,7 @@ namespace lsl {
 		}
 
 		/*
-		*  Generates a random double between two numbers.
+		*  Generates a random double between two numbers. [low, high)
 		*/
 		double randomNumber(double low, double high) {
 			std::uniform_real_distribution<double> dist(low, high);
